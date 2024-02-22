@@ -1,22 +1,60 @@
 import React from "react";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = () => {
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">My Blog</Link>
+    <header className="border-bottom border-light border-5 mb-5 p-2">
+      <div className="container">
+        <div className="row">
+          <nav className="navbar navbar-expand-lg">
+            <Link to="/" className="navbar-brand ms-2 fs-2 fw-bold text-black">
+              Quick Lease
+            </Link>
+            <div className="collapse navbar-collapse">
+              <ul className="navbar-nav">
+                <li className="nav-item fs-5">
+                  <Link className="nav-link" to="/">
+                    Home
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="col-lg-4 text-center">
+              <form className="d-flex">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button className="btn btn-outline-success" type="submit">
+                  Search
+                </button>
+              </form>
+            </div>
+            <ul className="navbar-nav">
+              <li className="nav-item fs-5">
+                <Link className="nav-link" to="/add-post">
+                  Create Post
+                </Link>
+              </li>
+              <li className="nav-item fs-5">
+                <Link className="nav-link" to="/profile">
+                  Profile
+                </Link>
+              </li>
+              <li className="nav-item fs-5">
+                <Link className="nav-link" to="/login">
+                  Login
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <ul className="nav-links">
-      <li>
-          <Link to="/add-post">New Post</Link>
-        </li>
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
-      </ul>
-    </nav>
+    </header>
   );
 };
 
