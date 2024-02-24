@@ -1,31 +1,36 @@
-import { useState } from "react";
 import Header from "../components/Header";
-
+import PostPreview from "../components/PostPreview";
+import { usePost } from "../context/PostContext";
 function Home() {
-  const [count, setCount] = useState(0);
-
+  const { posts, handleDelete } = usePost();
   return (
     <>
       <Header />
       <div className="container">
-        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-          <div className="col">
-            <div className="card">
-              <img src="././public/sk-icon.png" className="card-img-top" />
-              <div className="card-body">
-                <h5 className="card-title">Room 1</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Book
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <form className="d-flex">
+          <input
+            className="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button className="btn btn-outline-success" type="submit">
+            Search
+          </button>
+        </form>
       </div>
+      <br></br>
+      <div className="container">
+
+            {posts.length > 0 ? (
+                posts.map((post) => (
+                  <PostPreview post={post} key={post.id} handleDelete={handleDelete} />
+                ))
+            ) : (
+              <div className="no-tasks">No Tasks</div>
+            )}
+            </div>
+
     </>
   );
 }
